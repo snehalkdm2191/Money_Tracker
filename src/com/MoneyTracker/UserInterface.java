@@ -1,13 +1,7 @@
-package com.Money_Tracker;
-
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
+package com.MoneyTracker;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Scanner;
 
 public class UserInterface {
@@ -21,6 +15,7 @@ public class UserInterface {
     static double totalExpense;
 
     public static void showMenu(int opt) throws IOException {
+        balance();
         Transactions transactions = new Transactions();
         int option = opt;
         int updateOption = 0;
@@ -43,17 +38,17 @@ public class UserInterface {
 
             switch (option){
                 case '1':
-                    System.out.println("Pick option (1. All / 2. income / 3. expense)");
+                    System.out.println("Pick option (1. All / 2. Income / 3. Expense)");
                     updateOption = scanner.next().charAt(0);
                     switch (updateOption){
                         case '1':
-                            transactions.showData("all");
+                            transactions.showData("All");
                             break;
                         case '2':
-                            transactions.showData("income");
+                            transactions.showData("Income");
                             break;
                         case'3':
-                            transactions.showData("expense");
+                            transactions.showData("Expense");
                             break;
                         default:
                             break;
@@ -75,8 +70,6 @@ public class UserInterface {
                             System.out.println("Invalid Option..");
                             break;
                     }
-
-                    if(type != null) {
                         System.out.println("-----------------------------------------------------------------");
                         System.out.println("Enter Title : ");
                         title = scanner.next();
@@ -87,11 +80,12 @@ public class UserInterface {
                         amount = scanner.nextDouble();
                         System.out.println("Enter Month : ");
                         month = scanner.nextInt();
-                        transactions.addData(type, title, description, amount, month);
-                    }
-                    else{
-                        System.out.println("Transaction type should not be null..");
-                    }
+                        if(month > 12 || month < 1){
+                            System.out.println("Invalid month entry..");
+                        }
+                        else {
+                            transactions.addData(type, title, description, amount, month);
+                        }
                     break;
 
                 case '3':
@@ -120,7 +114,12 @@ public class UserInterface {
                                     amount = scanner.nextDouble();
                                     System.out.println("Enter Month : ");
                                     month = scanner.nextInt();
-                                    transactions.editData(editData, searchTitle, searchMonth, title, month, amount, description);
+                                    if(month > 12 || month < 1){
+                                        System.out.println("Invalid month entry..");
+                                    }
+                                    else {
+                                        transactions.editData(editData, searchTitle, searchMonth, title, month, amount, description);
+                                    }
                                     break;
                                 case '2':
                                     System.out.println("Enter Title & Month(1-12) to search record ");
@@ -169,7 +168,12 @@ public class UserInterface {
 
                                     System.out.println("Enter Month to edit : ");
                                     month = scanner.nextInt();
-                                    transactions.editData(editData, searchTitle, searchMonth, title, month, amount, description);
+                                    if(month > 12 || month < 1){
+                                        System.out.println("Invalid month entry..");
+                                    }
+                                    else {
+                                        transactions.editData(editData, searchTitle, searchMonth, title, month, amount, description);
+                                    }
                                     break;
                                 default:
                                     System.out.println("Invalid option ! Please enter again");
@@ -179,12 +183,21 @@ public class UserInterface {
 
                         case '2':
                             System.out.println("remove");
+                            System.out.println("Enter Title & Month(1-12) to remove ");
+                            System.out.println("Enter Title : ");
+                            searchTitle = scanner.next();
+                            System.out.println("Enter Month : ");
+                            searchMonth = scanner.nextInt();
+                            System.out.println("-----------------------------------------------------------------");
+
+                            transactions.removeData(searchTitle,searchMonth);
                             break;
                     }
                     break;
 
                 default:
-                    System.out.println("Invalid option ! Please enter again");
+                    if(option != '4')
+                        System.out.println("Invalid option ! Please enter again");
                     break;
             }
         }
@@ -193,48 +206,26 @@ public class UserInterface {
 
     }
 
-    public static void balance(){
-        JSONParser jsonParser = new JSONParser();
-        BufferedReader bufferedReader = null;
-        Object showObj;
-        try {
-            String sCurrentLine; // Variable to check current line
+    public static void balance() throws IOException {
+        File file= new File("transactionData.txt");
+        Scanner sc = new Scanner(file);
 
-            bufferedReader = new BufferedReader(new FileReader("myJSON.json"));
-            //Read the file till current line will be null
-            while ((sCurrentLine = bufferedReader.readLine()) != null) {
+        while(sc.hasNextLine())
+        {
+            String currentLine= sc.nextLine();
 
-                showObj = jsonParser.parse(sCurrentLine); // Object to parse current line data
-                JSONObject incomeObject = null; // Object for income type transaction data
-                JSONObject expenseObject = null; // Object for expense type transaction data
-
-                    incomeObject = (JSONObject) ((JSONObject) showObj).get("Income");
-                    expenseObject = (JSONObject) ((JSONObject) showObj).get("Expense");
-                    if(incomeObject != null){
-                        amount = (Double) incomeObject.get("Amount");
-                        totalIncome =  totalIncome + amount;
-                    }
-                    else if(expenseObject != null){
-                        amount = (Double) expenseObject.get("Amount");
-                        totalExpense =  totalExpense + amount;
-                    }
+            String[] tokens = currentLine.split(" , ");
+            if (String.valueOf(tokens[0]).equals("Income")) {
+                totalIncome = Double.valueOf(tokens[3]) + totalIncome;
+            }
+            else if (String.valueOf(tokens[0]).equals("Expense")) {
+                totalExpense = Double.valueOf(tokens[3]) + totalExpense;
             }
 
             totalAmount = totalIncome - totalExpense;
 
         }
-        catch (FileNotFoundException e) { e.printStackTrace(); }
-        catch (IOException e) { e.printStackTrace(); }
-        catch (ParseException e) { e.printStackTrace(); }
-        catch (Exception e) { e.printStackTrace(); }
-        finally {
-            try{
-                if(bufferedReader!=null)
-                    bufferedReader.close();
-            }catch(Exception ex){
-                System.out.println("Error in closing the Buffer Reader"+ex);
-            }
-        }
+        sc.close();
     }
 
 }

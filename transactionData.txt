@@ -1,0 +1,5 @@
+Income , Company , Salary , 1000.0 , 1
+Income , Company , Salary , 20000.0 , 2
+Expense , Snehal , Cloth shopping , 4000.0 , 4
+Expense , Lana , Groceries , 3000.0 , 5
+Expense , Jhon , IKEA Shopping , 2000.0 , 5
