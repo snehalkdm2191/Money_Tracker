@@ -13,39 +13,57 @@ In this application user can provide his income to calculate his total expense a
 ### Installation
 <h5 align="center">Install JDK on MacOS</h5>
 1. Install Homebrew : Open terminal and run this command to install Homebrew.
+
 ```sh
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 ```
+
 2. Install Java : after installing homebrew. run below command to install java.
+
 ```sh
 $ brew cask install java
 ```
+
 3. To check java version run below command in terminal.
+
 ```JS
 java -version
 ```
 
+
 <h5 align="center">Install JDK on Windows</h5>
+
 1. Download java : Goto Java SE download site @ http://www.oracle.com/technetwork/java/javase/downloads/index.html.
+
 2. Install Java : Once the download is complete, run the exe for install JDK.
+
 3. To check java version run below command in terminal.
+
 ```JS
 java -version
 ```
 
 ### Run program in terminal
+
 1. Download program from github or clone github repository to your local computer.
+
 2. open terminal go to the folder where you want to clone repository.
+
 3. To clone Github repository copy ssh link and run below command in terminal.  
+
 ```JS
 git clone git@github.com:youremailid.git(paste your ssh link here)
 ```
+
 4. go to the folder where you clone the repository and run below command to build project.
+
 ```JS
 ./gradlew clean build
 ```
+
 <p align="center">
  <img width="400px" src="images/terminal_1.png" align="center" alt="user interface" />
+
 5. run this command to run program. 
 ```JS
 Java -jar ./build/libs/MoneyTrackerGradle.jar
