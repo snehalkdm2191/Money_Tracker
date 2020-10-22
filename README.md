@@ -77,7 +77,6 @@ after running the program you can see this window. Select option to run operatio
 
 <p align="center">
  <img width="400px" src="images/start.png" align="center" alt="user interface" />
-<hr/>
 
 2. If you want to see present data select option 1.
 
@@ -103,25 +102,32 @@ after running the program you can see this window. Select option to run operatio
 <h5 align="center">Use Case Diagram</h5>
 
 <p align="center">
-<img width="400px" src="images/UseCaseDiagram.png" align="center" alt="uml" />
+<img width="500px" src="images/UseCaseDiagram.png" align="center" alt="uml" />
+<hr/>
 
 <p align="center">
 <h5 align="center">Sequence Diagram</h5>
+<hr/>
 
 <p align="center">
 <img width="400px" src="images/SequenceDiagram.png" align="center" alt="uml" />
+<hr/>
 
 <p align="center">
 <h5 align="center">Activity Diagram</h5>
+<hr/>
 
 <p align="center">
 <img width="400px" src="images/ActivityDiagram.png" align="center" alt="uml" />
+<hr/>
 
 <p align="center">
 <h5 align="center">Class Diagram</h5>
+<hr/>
 
 <p align="center">
 <img width="400px" src="images/ClassDiagram.png" align="center" alt="uml" />
+<hr/>
 
 
 
