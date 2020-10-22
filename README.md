@@ -99,7 +99,9 @@ after running the program you can see this window. Select option to run operatio
 <img width="400px" src="images/4.png" align="center" alt="user interface" />
 
 ### UML Diagrams
+<hr/>
 <h5 align="center">Use Case Diagram</h5>
+<hr/>
 
 <p align="center">
 <img width="500px" src="images/UseCaseDiagram.png" align="center" alt="uml" />
