@@ -72,27 +72,54 @@ Java -jar ./build/libs/MoneyTrackerGradle.jar
  <img width="400px" src="images/terminal_2.png" align="center" alt="user interface" />
 
 ### User Guide
+1. In money tracker application user can add, edit, remove and see all transactions.
+after running the program you can see this window. Select option to run operation.
+
 <p align="center">
  <img width="400px" src="images/start.png" align="center" alt="user interface" />
 <hr/>
+
+2. If you want to see present data select option 1.
+
 <img width="400px" src="images/1.png" align="center" alt="user interface" />
 <hr/>
+
+3. To add data select option 2. In add option there are two options income and expense. According to data select option and add details.
+
 <img width="400px" src="images/2.png" align="center" alt="user interface" />
 <hr/>
+
+4. In option 3 you can edit or remove data. In edit option you can edit data according to you choice.
+
 <img width="400px" src="images/3.png" align="center" alt="user interface" />
 <hr/>
+
+5. If you want to quite or save data select option 4.
+
 <img width="400px" src="images/4.png" align="center" alt="user interface" />
 
 ### UML Diagrams
 <h5 align="center">Use Case Diagram</h5>
+
 <p align="center">
  <img width="400px" src="images/UseCaseDiagram.png" align="center" alt="uml" />
-<hr/>
+
 <h5 align="center">Sequence Diagram</h5>
+
 <img width="400px" src="images/SequenceDiagram.png" align="center" alt="uml" />
-<hr/>
+
 <h5 align="center">Activity Diagram</h5>
+
 <img width="400px" src="images/ActivityDiagram.png" align="center" alt="uml" />
-<hr/>
+
 <h5 align="center">Class Diagram</h5>
+
 <img width="400px" src="images/ClassDiagram.png" align="center" alt="uml" />
+
+
+
+
+
+
+
+
