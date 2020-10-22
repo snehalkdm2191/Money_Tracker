@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TransactionsTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2020-10-22T18:56:10" hostname="SDA-27-mbpro" time="0.027">
+  <properties/>
+  <testcase name="addData()" classname="TransactionsTest" time="0.015"/>
+  <testcase name="showData()" classname="TransactionsTest" time="0.004"/>
+  <testcase name="removeTestFiles()" classname="TransactionsTest" time="0.001"/>
+  <testcase name="removeData()" classname="TransactionsTest" time="0.003"/>
+  <testcase name="editData()" classname="TransactionsTest" time="0.001"/>
+  <system-out><![CDATA[File not found
+File not found
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

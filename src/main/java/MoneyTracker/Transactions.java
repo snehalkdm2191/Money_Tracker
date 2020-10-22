@@ -1,15 +1,10 @@
-package com.MoneyTracker;
+package MoneyTracker;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Transactions {
-    public String type;
-    public String title;
-    public String description;
-    private double amount;
-    private Integer month;
-    
+
     //Method to add all type of transactions in text file
     public void addData(String transType, String title, String description, Double amount, Integer month) throws IOException {
         File file = new File("transactionData.txt");
@@ -84,7 +79,7 @@ public class Transactions {
         boolean checked = true; // variable created to check if record is present or not.
         BufferedWriter writer = null;
         File file= new File("transactionData.txt");  //Original file path
-        File tempFile = new File("temp.txt");   //Temparary file path
+        File tempFile = new File("tempFile.txt");   //Temparary file path
 
         try {
             writer = new BufferedWriter(new FileWriter(tempFile));
@@ -148,10 +143,10 @@ public class Transactions {
 
     //Method created to remove data
     public void removeData(String searchTitle,int searchMonth) throws IOException {
-        boolean checked = true;
+        boolean checked = true;   // check change has been done or not
         BufferedWriter writer = null;
         File file= new File("transactionData.txt");      //Original file path
-        File tempFile = new File("temp.txt");     //Temparary file path
+        File tempFile = new File("tempFile.txt");     //Temparary file path
 
         try{
         writer = new BufferedWriter(new FileWriter(tempFile));
@@ -159,30 +154,29 @@ public class Transactions {
 
         while(sc.hasNextLine())
         {
-            String currentLine= sc.nextLine();
+            String currentLine= sc.nextLine();      // original file data added in currentLine string
 
             String[] tokens = currentLine.split(" , ");
             if (String.valueOf(tokens[1]).equals(searchTitle) && Integer.valueOf(tokens[4]) == searchMonth && checked) {
-                currentLine = "";
+                currentLine = "";    //if record found do changes in that line
                 checked = false;
             }
 
-            writer.write(currentLine + System.getProperty("line.separator"));
+            writer.write(currentLine + System.getProperty("line.separator"));       // change added in temparary file
 
-        }
-        if(checked == true){
-            System.out.println("No matching record..");
-        }
-        else {
-            System.out.println("Data removed successfully..");
         }
         writer.close();
         sc.close();
-        file.delete();
-        boolean successful = tempFile.renameTo(file);
+        file.delete();      // delete original file
+        boolean successful = tempFile.renameTo(file);   // rename temparary file to original file name
+            if(successful == true){
+                System.out.println("Data removed successfully..");
+            }
+            else {
+                System.out.println("No matching record..");
+            }
         }
         catch (FileNotFoundException e) { System.out.println("File not found"); }
-        catch (IOException e) { e.printStackTrace(); }
         finally {
             try{
                 if(writer!=null)
@@ -192,4 +186,5 @@ public class Transactions {
             }
         }
     }
+
 }
