@@ -66,7 +66,7 @@ git clone git@github.com:youremailid.git(paste your ssh link here)
 
 5. run this command to run program. 
 ```JS
-Java -jar ./build/libs/MoneyTrackerGradle.jar
+Java -jar ./build/libs/Money_Tracker.jar
 ```
 <p align="center">
  <img width="400px" src="images/terminal_2.png" align="center" alt="user interface" />
