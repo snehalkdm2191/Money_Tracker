@@ -20,7 +20,10 @@ public class Transactions {
         try {
             fileWriter = new FileWriter(file, true);
             Writer output = new BufferedWriter(fileWriter);
-            output.write("\n");
+            // condition added to check file is empty or not. if file is not empty then record will add in new line.
+            if(file.length() != 0) {
+                output.write("\n");
+            }
             int size = list.size();
             for(int i=0; i < size; i++){
                 if(i==0)
@@ -45,33 +48,36 @@ public class Transactions {
 
     // Method to show data as per type of transaction
     public void showData(String typeData) throws FileNotFoundException {
-        File file= new File("transactionData.txt");
-        Scanner sc = new Scanner(file);
+        File file = new File("transactionData.txt");
+        if(file.length() != 0) {
+            Scanner sc = new Scanner(file);
 
-        while(sc.hasNextLine())
-        {
-            String currentLine= sc.nextLine();
+            while (sc.hasNextLine()) {
+                String currentLine = sc.nextLine();
 
-            String[] tokens = currentLine.split(" , ");
-            if (String.valueOf(tokens[0]).equals("Income") && (typeData.equals("Income") || typeData.equals("All"))) {
-                System.out.println("Transaction type : " + tokens[0]);
-                System.out.println("Title : " + tokens[1]);
-                System.out.println("Description : " + tokens[2]);
-                System.out.println("Amount : " + tokens[3]);
-                System.out.println("Month : " + tokens[4]);
-                System.out.println("-----------------------------------------------------------------");
+                String[] tokens = currentLine.split(" , ");
+                if (String.valueOf(tokens[0]).equals("Income") && (typeData.equals("Income") || typeData.equals("All"))) {
+                    System.out.println("Transaction type : " + tokens[0]);
+                    System.out.println("Title : " + tokens[1]);
+                    System.out.println("Description : " + tokens[2]);
+                    System.out.println("Amount : " + tokens[3]);
+                    System.out.println("Month : " + tokens[4]);
+                    System.out.println("-----------------------------------------------------------------");
+                } else if (String.valueOf(tokens[0]).equals("Expense") && (typeData.equals("Expense") || typeData.equals("All"))) {
+                    System.out.println("Transaction type : " + tokens[0]);
+                    System.out.println("Title : " + tokens[1]);
+                    System.out.println("Description : " + tokens[2]);
+                    System.out.println("Amount : " + tokens[3]);
+                    System.out.println("Month : " + tokens[4]);
+                    System.out.println("-----------------------------------------------------------------");
+                }
+
             }
-            else if (String.valueOf(tokens[0]).equals("Expense") && (typeData.equals("Expense")|| typeData.equals("All"))) {
-                System.out.println("Transaction type : " + tokens[0]);
-                System.out.println("Title : " + tokens[1]);
-                System.out.println("Description : " + tokens[2]);
-                System.out.println("Amount : " + tokens[3]);
-                System.out.println("Month : " + tokens[4]);
-                System.out.println("-----------------------------------------------------------------");
-            }
-
+            sc.close();
         }
-        sc.close();
+        else{
+            System.out.println("No records found..");
+        }
     }
 
     // Method to edit json file data

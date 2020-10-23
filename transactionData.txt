@@ -1,2 +1,4 @@
-
-Income , Amol , Company Salary , 80000.0 , 2
+Income , Snehal , Company Salary , 40000.0 , 2
+Income , Amol , Company Salary , 80000.0 , 4
+Expense , Lana , Cloth Shopping , 15000.0 , 4
+Expense , Amol , Ikea Shopping , 4000.0 , 5

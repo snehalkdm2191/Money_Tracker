@@ -61,30 +61,46 @@ public class UserInterface {
                     switch (updateOption){
                         case '1':
                             type = "Income";
+                            System.out.println("-----------------------------------------------------------------");
+                            System.out.println("Enter Title : ");
+                            title = scanner.next();
+                            System.out.println("Enter Description : ");
+                            description = scanner.next();
+                            description += scanner.nextLine();
+                            System.out.println("Enter Amount : ");
+                            amount = scanner.nextDouble();
+                            System.out.println("Enter Month : ");
+                            month = scanner.nextInt();
+                            if(month > 12 || month < 1){
+                                System.out.println("Invalid month entry..");
+                            }
+                            else {
+                                transactions.addData(type, title, description, amount, month);
+                            }
                             break;
                         case '2':
                             type = "Expense";
+                            System.out.println("-----------------------------------------------------------------");
+                            System.out.println("Enter Title : ");
+                            title = scanner.next();
+                            System.out.println("Enter Description : ");
+                            description = scanner.next();
+                            description += scanner.nextLine();
+                            System.out.println("Enter Amount : ");
+                            amount = scanner.nextDouble();
+                            System.out.println("Enter Month : ");
+                            month = scanner.nextInt();
+                            if(month > 12 || month < 1){
+                                System.out.println("Invalid month entry..");
+                            }
+                            else {
+                                transactions.addData(type, title, description, amount, month);
+                            }
                             break;
                         default:
                             System.out.println("Invalid Option..");
                             break;
                     }
-                        System.out.println("-----------------------------------------------------------------");
-                        System.out.println("Enter Title : ");
-                        title = scanner.next();
-                        System.out.println("Enter Description : ");
-                        description = scanner.next();
-                        description += scanner.nextLine();
-                        System.out.println("Enter Amount : ");
-                        amount = scanner.nextDouble();
-                        System.out.println("Enter Month : ");
-                        month = scanner.nextInt();
-                        if(month > 12 || month < 1){
-                            System.out.println("Invalid month entry..");
-                        }
-                        else {
-                            transactions.addData(type, title, description, amount, month);
-                        }
                     break;
 
                 case '3':
